@@ -38,6 +38,7 @@ class InstrScr(Screen):
         outer.add_widget(line2)
         outer.add_widget(self.btn)
         self.add_widget(outer)
+
     def next(self):
         global name
         name = self.in_name.text
