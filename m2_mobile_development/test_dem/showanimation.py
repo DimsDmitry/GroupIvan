@@ -6,6 +6,7 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.animation import Animation
 
+
 class AnimatedButton(Button):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -27,6 +28,7 @@ class AnimatedButton(Button):
 
     def start_animation(self):
         self.animate.start(self)
+
 
 class MyApp(App):
     def build(self):

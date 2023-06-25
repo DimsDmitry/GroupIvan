@@ -12,6 +12,8 @@ from kivy.core.window import Window
 from instructions import *
 from ruffier import test
 from seconds import Seconds
+from sits import Sits
+from runner import Runner
 
 
 name = ''
@@ -112,17 +114,37 @@ class PulseScr(Screen):
 class CheckSits(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        instr = Label(text=txt_sits)
-        self.btn = Button(text='Продолжить', size_hint=(0.3, 0.2), pos_hint={'center_x': 0.5})
+        self.next_screen = False
+        instr = Label(text=txt_sits, size=(0.5, 1))
+        self.lbl_sits = Sits(30)
+        self.run = Runner(total=30, steptime=1.5, size_hint=(0.4, 1))
+        self.run.bind(finished=self.run_finished)
+        line = BoxLayout()
+        v_line = BoxLayout(orientation='vertical', size_hint=(0.3, 1))
+        v_line.add_widget(self.lbl_sits)
+        line.add_widget(instr)
+        line.add_widget(v_line)
+        line.add_widget(self.run)
+        self.btn = Button(text='Начать', size_hint=(0.3, 0.2), pos_hint={'center_x': 0.5})
         self.btn.on_press = self.next
         self.btn.background_color = btn_color
         outer = BoxLayout(orientation='vertical', padding=8, spacing=8)
-        outer.add_widget(instr)
+        outer.add_widget(line)
         outer.add_widget(self.btn)
         self.add_widget(outer)
 
+    def run_finished(self, instance, value):
+        self.btn.set_disabled(False)
+        self.btn.text = 'Продолжить'
+        self.next_screen = True
+
     def next(self):
-        self.manager.current = 'pulse2'
+        if self.next_screen:
+            self.manager.current = 'pulse2'
+        else:
+            self.btn.set_disabled(True)
+            self.run.start()
+            self.run.bind(value=self.lbl_sits.next)
 
 
 class PulseScr2(Screen):
