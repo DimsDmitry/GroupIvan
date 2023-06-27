@@ -91,7 +91,7 @@ print(s ** 2)
 print(s.astype(np.int16)) #приводит все элементы к указанному типу
 
 print('-' * 100)
-file = pd.read_csv('GoogleApps.csv', nrows=1) #читаем файл, 1 строку (не считая 1 с заголовками)
+file = pd.read_csv('GoogleApps.csv') #читаем файл, 1 строку (не считая 1 с заголовками)
 print(file)
 
 '''Другие возможные варианты файлов:'''
