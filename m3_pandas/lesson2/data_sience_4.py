@@ -35,6 +35,8 @@ result = df[df['Type'] == 'Paid'].pivot_table(
 )
 
 print(result)
-
+print('\n' + 100 * '@' + '\n')
 # Бонусная задача. Найди категории бесплатных (Type == 'Free') приложений, 
 # в которых приложения разработаны не для всех возрастных групп ('Content Rating')
+result = df[df['Type'] == 'Free'].pivot_table(index='Category', columns='Content Rating', values='Reviews', aggfunc='mean')
+print(result)
