@@ -1,4 +1,4 @@
-num = 423.123124124
+text = 'January 7, 2018'
 
-num = round(num)
-print(num)
+text = text.split()[0]
+print(text)
