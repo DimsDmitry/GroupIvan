@@ -58,9 +58,18 @@ print(df['Number of genres'].max())
 # Создай новый столбец, хранящий сезон, в котором было произведено последнее обновление ('Last Updated') приложения. Назови его 'Season'
 def set_season(date):
     month = date.split()[0]
-    seasons = {'Зима': ['December, January, February']
-               ,}
+    seasons = {'Зима': ['December', 'January', 'February'],
+               'Весна': ['March', 'April', 'May'],
+               'Лето': ['June', 'July', 'August'],
+               'Осень': ['September', 'October', 'November']
+               }
     for season in seasons:
-        if month in seasons[...]
+        if month in seasons[season]:
+            return season
+    return 'Сезон не установлен'
+
+
+df['Season'] = df['Last Updated'].apply(set_season)
 
 # Выведи на экран сезоны и их количество в датасете
+print(df['Season'].value_counts())
