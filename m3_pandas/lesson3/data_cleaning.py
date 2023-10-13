@@ -1,4 +1,5 @@
 import pandas as pd
+import pandas as pd
 df = pd.read_csv('GooglePlayStore_wild.csv')
 # Выведи информацию о всем DataFrame, чтобы узнать какие столбцы нуждаются в очистке
 print(df.info())
