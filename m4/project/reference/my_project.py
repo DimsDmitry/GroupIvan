@@ -148,7 +148,7 @@ y = df['result']
 x = df_x
 
 # Разбиваем выборку на тестовую и тренировочную (на тренировочной обучаем, на тестовой проверяем)
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.25, stratify = y)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, stratify=y)
 
 # приводим все данные к единому масштабу, например:
 # (возраст был от 18 до 65, стал от 0 до 1)
